@@ -51,8 +51,8 @@ end
 This way you can keep separated the repository and entity logic as Hanami suggests.
 You can call the usual database related methods using the repository:
 ```ruby
-BookRepository.first                        # #<Book:0x00007fd8b6bea578>
-BookRepository.find('5af4c697699bbdaad')    # #<Book id: 5af4c697699bbdaad>
+BookRepository.new.first                        # #<Book:0x00007fd8b6bea578>
+BookRepository.new.find('5af4c697699bbdaad')    # #<Book id: 5af4c697699bbdaad>
 ```
 Or even collection specific methods, for example `insert_many` or `aggregate`.
 
