@@ -13,6 +13,9 @@ RSpec.describe Hanami::Mongoid do
     it "adds a :find method to the EntityRepository class" do
       expect(repository.respond_to? :find).to be true
     end
+    it "adds a :find_by method to the EntityRepository class" do
+      expect(repository.respond_to? :find_by).to be true
+    end
     it "adds a :where method to the EntityRepository class" do
       expect(repository.respond_to? :where).to be true
     end
@@ -27,9 +30,6 @@ RSpec.describe Hanami::Mongoid do
     end
     it "adds a :last method to the EntityRepository class" do
       expect(repository.respond_to? :last).to be true
-    end
-    it "adds a :new method to the EntityRepository class" do
-      expect(repository.respond_to? :new).to be true
     end
     it "adds a :create method to the EntityRepository class" do
       expect(repository.respond_to? :create).to be true
