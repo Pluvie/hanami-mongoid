@@ -12,8 +12,8 @@ module Hanami
 
       ##
       # Forwards common repository methods to the model
-      %i( find where any_of all first last new create
-        destroy_all delete_all update_all ).each do |method|
+      %i( find find_by where any_of all first last new create
+          destroy_all delete_all update_all ).each do |method|
         define_method method do |*args|
           self.model_klass.send method, *args
         end
