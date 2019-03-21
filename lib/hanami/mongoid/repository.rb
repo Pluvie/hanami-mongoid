@@ -33,7 +33,7 @@ module Hanami
       # Forwards common repository methods to the model instance
       %i( destroy delete update_attributes update ).each do |method|
         define_method method do |entity_id, *args|
-          self.model_klass.find(entity_id).send method, *args
+          self.model_klass.find(entity_id)&.send method, *args
         end
       end
 
