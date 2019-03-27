@@ -23,7 +23,7 @@ module Hanami
       # Forwards create method to accept a model instance
       define_method :create do |model_instance|
         if model_instance.is_a? self.model_klass
-          model_instance.save
+          model_instance.save(validate: false)
           model_instance
         else
           self.model_klass.create(model_instance)
