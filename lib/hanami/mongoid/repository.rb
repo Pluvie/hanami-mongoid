@@ -24,7 +24,7 @@ module Hanami
       define_method :create do |entity_instance|
         unless entity_instance.is_a? self.model_klass
           entity_instance = self.model_klass.new(entity_instance)
-        else
+        end
         entity_instance.save(validate: false)
         entity_instance
       end
