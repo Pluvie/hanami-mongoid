@@ -21,20 +21,32 @@ module Hanami
 
       ##
       # Forwards create method to accept a model instance
-      define_method :create do |model_instance|
-        if model_instance.is_a? self.model_klass
-          model_instance.save(validate: false)
-          model_instance
+      define_method :create do |entity_instance|
+        unless entity_instance.is_a? self.model_klass
+          entity_instance = self.model_klass.new(entity_instance)
         else
-          self.model_klass.create(model_instance)
+        entity_instance.save(validate: false)
+        entity_instance
+      end
+
+      ##
+      # Forwards update methods to accept a model instance
+      %i( update_attributes update ).each do |method|
+        define_method :update do |entity_id, entity_attributes|
+          entity_instance = self.model_klass.find(entity_id)
+          if entity_instance.present?
+            entity_instance.assign_attributes(entity_attributes)
+            entity_instance.save(validate: false)
+            entity_instance
+          end
         end
       end
 
       ##
       # Forwards common repository methods to the model instance
-      %i( destroy delete update_attributes update ).each do |method|
-        define_method method do |entity_id, *args|
-          self.model_klass.find(entity_id)&.send method, *args
+      %i( destroy delete ).each do |method|
+        define_method method do |entity_id|
+          self.model_klass.find(entity_id)&.send method
         end
       end
 
