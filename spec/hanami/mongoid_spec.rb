@@ -25,6 +25,9 @@ RSpec.describe Hanami::Mongoid do
     it "adds a :all method to the EntityRepository class" do
       expect(repository.respond_to? :all).to be true
     end
+    it "adds a :none method to the EntityRepository class" do
+      expect(repository.respond_to? :none).to be true
+    end
     it "adds a :first method to the EntityRepository class" do
       expect(repository.respond_to? :first).to be true
     end
@@ -48,9 +51,6 @@ RSpec.describe Hanami::Mongoid do
     end
     it "adds a :delete method to the EntityRepository class" do
       expect(repository.respond_to? :delete).to be true
-    end
-    it "adds a :update_attributes method to the EntityRepository class" do
-      expect(repository.respond_to? :update_attributes).to be true
     end
     it "adds a :update method to the EntityRepository class" do
       expect(repository.respond_to? :update).to be true
