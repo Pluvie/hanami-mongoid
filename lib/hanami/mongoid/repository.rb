@@ -52,7 +52,7 @@ module Hanami
 
       ##
       # Forwards common repository methods to the model's collection
-      %i( insert_many aggregate ).each do |method|
+      %i( insert_many delete_many aggregate ).each do |method|
         define_method method do |*args|
           self.model_klass.collection.send method, *args
         end

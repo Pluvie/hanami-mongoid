@@ -58,6 +58,9 @@ RSpec.describe Hanami::Mongoid do
     it "adds a :insert_many method to the EntityRepository class" do
       expect(repository.respond_to? :insert_many).to be true
     end
+    it "adds a :delete_many method to the EntityRepository class" do
+      expect(repository.respond_to? :insert_many).to be true
+    end
     it "adds a :aggregate method to the EntityRepository class" do
       expect(repository.respond_to? :aggregate).to be true
     end
